@@ -1,0 +1,49 @@
+ Scenario
+
+I have an employee attendance dataset in Power BI with the following columns:
+
+Employee_Name
+
+Date
+
+Check_In_Time
+
+Check_Out_Time
+
+Working_Hours
+
+I want to calculate total attendance hours for the last 2 months for each employee using Dax
+
+Prompt :
+
+Example DAX Measure (Expected Output)
+Total Hours Last 2 Months =
+CALCULATE(
+    SUM(Attendance[Working_Hours]),
+    DATESINPERIOD(
+        Attendance[Date],
+        TODAY(),
+        -2,
+        MONTH
+    )
+)
+
+Explanation:
+
+SUM(Attendance[Working_Hours]) → Calculates total hours
+
+DATESINPERIOD() → Filters data for the last 2 months
+
+TODAY() → Uses current date dynamically
+
+CALCULATE() → Applies the filter context
+
+Use Case
+
+In a Power BI Dashboard, this measure helps:
+
+Track employee productivity
+
+Monitor recent attendance trends
+
+Identify low working hours employees
